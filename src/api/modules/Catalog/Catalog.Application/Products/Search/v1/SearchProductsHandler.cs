@@ -2,7 +2,7 @@ using FSH.Framework.Core.Paging;
 using FSH.Framework.Core.Persistence;
 using FSH.Framework.Core.Specifications;
 using FSH.Starter.WebApi.Catalog.Application.Products.Get.v1;
-using FSH.Starter.WebApi.Catalog.Domain;
+using FSH.Starter.WebApi.Catalog.Domain.Products;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 
-namespace FSH.Starter.WebApi.Catalog.Infrastructure.Endpoints.v1;
+namespace FSH.Starter.WebApi.Catalog.Infrastructure.Endpoints.Products.v1;
 
 public static class SearchProductsEndpoint
 {

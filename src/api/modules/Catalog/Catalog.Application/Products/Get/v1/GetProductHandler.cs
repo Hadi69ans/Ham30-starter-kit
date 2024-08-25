@@ -1,9 +1,9 @@
 using Microsoft.Extensions.DependencyInjection;
-using FSH.Starter.WebApi.Catalog.Domain.Exceptions;
 using FSH.Framework.Core.Persistence;
 using FSH.Framework.Core.Caching;
-using FSH.Starter.WebApi.Catalog.Domain;
 using MediatR;
+using FSH.Starter.WebApi.Catalog.Domain.Products;
+using FSH.Starter.WebApi.Catalog.Domain.Products.Exceptions;
 
 namespace FSH.Starter.WebApi.Catalog.Application.Products.Get.v1;
 public sealed class GetProductHandler(

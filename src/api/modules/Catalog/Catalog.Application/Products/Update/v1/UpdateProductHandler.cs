@@ -1,6 +1,6 @@
 using FSH.Framework.Core.Persistence;
-using FSH.Starter.WebApi.Catalog.Domain;
-using FSH.Starter.WebApi.Catalog.Domain.Exceptions;
+using FSH.Starter.WebApi.Catalog.Domain.Products;
+using FSH.Starter.WebApi.Catalog.Domain.Products.Exceptions;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;

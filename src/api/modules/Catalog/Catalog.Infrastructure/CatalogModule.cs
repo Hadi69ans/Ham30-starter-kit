@@ -1,8 +1,10 @@
 ﻿using Carter;
 using FSH.Framework.Core.Persistence;
 using FSH.Framework.Infrastructure.Persistence;
-using FSH.Starter.WebApi.Catalog.Domain;
-using FSH.Starter.WebApi.Catalog.Infrastructure.Endpoints.v1;
+using FSH.Starter.WebApi.Catalog.Domain.Brands;
+using FSH.Starter.WebApi.Catalog.Domain.Products;
+using FSH.Starter.WebApi.Catalog.Infrastructure.Endpoints.Brands.v1;
+using FSH.Starter.WebApi.Catalog.Infrastructure.Endpoints.Products.v1;
 using FSH.Starter.WebApi.Catalog.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -23,6 +25,15 @@ public static class CatalogModule
             productGroup.MapGetProductListEndpoint();
             productGroup.MapProductUpdateEndpoint();
             productGroup.MapProductDeleteEndpoint();
+
+
+            var brandGroup = app.MapGroup("brands").WithTags("brands");
+            brandGroup.MapBrandCreationEndpoint();
+            brandGroup.MapGetBrandEndpoint();
+            brandGroup.MapGetBrandListEndpoint();
+            brandGroup.MapBrandUpdateEndpoint();
+            brandGroup.MapBrandDeleteEndpoint();
+
         }
     }
     public static WebApplicationBuilder RegisterCatalogServices(this WebApplicationBuilder builder)
@@ -30,8 +41,12 @@ public static class CatalogModule
         ArgumentNullException.ThrowIfNull(builder);
         builder.Services.BindDbContext<CatalogDbContext>();
         builder.Services.AddScoped<IDbInitializer, CatalogDbInitializer>();
+
         builder.Services.AddKeyedScoped<IRepository<Product>, CatalogRepository<Product>>("catalog:products");
         builder.Services.AddKeyedScoped<IReadRepository<Product>, CatalogRepository<Product>>("catalog:products");
+
+        builder.Services.AddKeyedScoped<IRepository<Brand>, CatalogRepository<Brand>>("catalog:brands");
+        builder.Services.AddKeyedScoped<IReadRepository<Brand>, CatalogRepository<Brand>>("catalog:brands");
         return builder;
     }
     public static WebApplication UseCatalogModule(this WebApplication app)

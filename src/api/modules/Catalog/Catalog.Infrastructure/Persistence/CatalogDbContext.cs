@@ -2,7 +2,8 @@
 using FSH.Framework.Core.Persistence;
 using FSH.Framework.Infrastructure.Persistence;
 using FSH.Framework.Infrastructure.Tenant;
-using FSH.Starter.WebApi.Catalog.Domain;
+using FSH.Starter.WebApi.Catalog.Domain.Brands;
+using FSH.Starter.WebApi.Catalog.Domain.Products;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -17,6 +18,7 @@ public sealed class CatalogDbContext : FshDbContext
     }
 
     public DbSet<Product> Products { get; set; } = null!;
+    public DbSet<Brand> Brands { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

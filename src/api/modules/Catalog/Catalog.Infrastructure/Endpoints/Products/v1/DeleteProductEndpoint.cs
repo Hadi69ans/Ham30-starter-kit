@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 
-namespace FSH.Starter.WebApi.Catalog.Infrastructure.Endpoints.v1;
+namespace FSH.Starter.WebApi.Catalog.Infrastructure.Endpoints.Products.v1;
 public static class DeleteProductEndpoint
 {
     internal static RouteHandlerBuilder MapProductDeleteEndpoint(this IEndpointRouteBuilder endpoints)

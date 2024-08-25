@@ -1,5 +1,6 @@
 ﻿using FSH.Framework.Core.Persistence;
-using FSH.Starter.WebApi.Catalog.Domain;
+using FSH.Starter.WebApi.Catalog.Domain.Brands;
+using FSH.Starter.WebApi.Catalog.Domain.Products;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
@@ -19,15 +20,31 @@ internal sealed class CatalogDbInitializer(
 
     public async Task SeedAsync(CancellationToken cancellationToken)
     {
-        const string Name = "Keychron V6 QMK Custom Wired Mechanical Keyboard";
-        const string Description = "A full-size layout QMK/VIA custom mechanical keyboard";
-        const decimal Price = 79;
-        if (await context.Products.FirstOrDefaultAsync(t => t.Name == Name, cancellationToken).ConfigureAwait(false) is null)
+
+
+        const string BrandName = "First Brand";
+        const string BrandDescription = "Test Brand";
+
+        if (await context.Brands.FirstOrDefaultAsync(t => t.Name == BrandName, cancellationToken).ConfigureAwait(false) is null)
         {
-            var product = Product.Create(Name, Description, Price);
-            await context.Products.AddAsync(product, cancellationToken);
+            var brand = Brand.Create(BrandName, BrandDescription);
+            await context.Brands.AddAsync(brand, cancellationToken);
+
             await context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
-            logger.LogInformation("[{Tenant}] seeding default catalog data", context.TenantInfo!.Identifier);
+            logger.LogInformation("[{Tenant}] seeding default catalog:brand data", context.TenantInfo!.Identifier);
+        }
+
+
+        const string ProductName = "First Product";
+        const string ProductDescription = "Test Product";
+        const decimal ProductPrice = 100;
+        if (await context.Products.FirstOrDefaultAsync(t => t.Name == ProductName, cancellationToken).ConfigureAwait(false) is null)
+        {
+            var product = Product.Create(ProductName, ProductDescription, ProductPrice);
+            await context.Products.AddAsync(product, cancellationToken);
+
+            await context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+            logger.LogInformation("[{Tenant}] seeding default catalog:product data", context.TenantInfo!.Identifier);
         }
     }
 }

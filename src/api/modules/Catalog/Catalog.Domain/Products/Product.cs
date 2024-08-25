@@ -1,8 +1,8 @@
 ﻿using FSH.Framework.Core.Domain;
 using FSH.Framework.Core.Domain.Contracts;
-using FSH.Starter.WebApi.Catalog.Domain.Events;
+using FSH.Starter.WebApi.Catalog.Domain.Products.Events;
 
-namespace FSH.Starter.WebApi.Catalog.Domain;
+namespace FSH.Starter.WebApi.Catalog.Domain.Products;
 public class Product : AuditableEntity, IAggregateRoot
 {
     public string Name { get; private set; } = default!;
@@ -28,7 +28,7 @@ public class Product : AuditableEntity, IAggregateRoot
         if (description is not null && Description?.Equals(description, StringComparison.OrdinalIgnoreCase) is not true) Description = description;
         if (price.HasValue && Price != price) Price = price.Value;
 
-        this.QueueDomainEvent(new ProductUpdated() { Product = this });
+        QueueDomainEvent(new ProductUpdated() { Product = this });
         return this;
     }
 

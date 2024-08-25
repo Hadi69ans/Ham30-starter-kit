@@ -1,4 +1,4 @@
-﻿using FSH.Starter.WebApi.Catalog.Domain.Events;
+﻿using FSH.Starter.WebApi.Catalog.Domain.Products.Events;
 using MediatR;
 using Microsoft.Extensions.Logging;
 

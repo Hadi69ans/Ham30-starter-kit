@@ -1,5 +1,5 @@
 ﻿using FSH.Framework.Core.Persistence;
-using FSH.Starter.WebApi.Catalog.Domain;
+using FSH.Starter.WebApi.Catalog.Domain.Products;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
